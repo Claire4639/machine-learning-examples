@@ -13,6 +13,10 @@ from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
 
+import numpy as np
+from sklearn.metrics import accuracy_score
+from class_vis import prettyPicture
+
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
@@ -20,11 +24,20 @@ from email_preprocess import preprocess
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
-
+#features_train = features_train[:len(features_train)/100] 
+#labels_train = labels_train[:len(labels_train)/100] 
 
 #########################################################
 ### your code goes here ###
+from sklearn import svm
+clf = svm.SVC(kernel="rbf", C=10000)
+clf.fit(features_train, labels_train)  
+print "fitting model"
+pred = clf.predict(features_test)
 
+#ans=pred[]
+#print "answer: ", ans
+acc = accuracy_score(pred, labels_test)
+print "accuracy: ", acc
 #########################################################
-
-
+"""34, 37"""
