@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 
 """ 
     This is the code to accompany the Lesson 3 (decision tree) mini-project.
@@ -19,12 +19,23 @@ from email_preprocess import preprocess
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
-
+print features_train
+print len(features_train[0])
 
 
 #########################################################
 ### your code goes here ###
 
+from sklearn import tree
+clf = tree.DecisionTreeClassifier(min_samples_split=40)
+clf = clf.fit(features_train, labels_train)
+
+print len(features_train[0])
+
+from sklearn.metrics import accuracy_score
+pred = clf.predict(features_test)
+acc = accuracy_score(pred, labels_test)
+print acc
 
 #########################################################
 

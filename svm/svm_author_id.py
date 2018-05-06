@@ -26,7 +26,7 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #features_train = features_train[:len(features_train)/100] 
 #labels_train = labels_train[:len(labels_train)/100] 
-
+#print labels_train
 #########################################################
 ### your code goes here ###
 from sklearn import svm
@@ -35,8 +35,8 @@ clf.fit(features_train, labels_train)
 print "fitting model"
 pred = clf.predict(features_test)
 
-#ans=pred[]
-#print "answer: ", ans
+
+print "No of chris emails: ", sum(pred)
 acc = accuracy_score(pred, labels_test)
 print "accuracy: ", acc
 #########################################################
